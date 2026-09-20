@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "job_id": "job-incremental01",
-  "trace_id": "flow-a07-002",
+  "trace_id": "trace-a07-002",
   "job_type": "INCREMENTAL_CHECK",
   "status": "SUCCEEDED",
   "input": {
@@ -24,8 +24,18 @@
     "baseline": {
       "commit": "1111111111111111111111111111111111111111",
       "configuration_id": "gcc-debug",
-      "actual_graph_uri": "artifact://A07-B07/job-full01/actual-graph.json"
-    }
+      "actual_graph_uri": "artifact://pair07/full01/actual.json"
+    },
+    "commit": "2222222222222222222222222222222222222222",
+    "defined_by": "A07",
+    "idempotency_key": "a07-incremental-001"
+  },
+  "execution": {
+    "created_at": "2026-09-20T10:05:00Z",
+    "queued_at": "2026-09-20T10:05:00Z",
+    "started_at": "2026-09-20T10:05:01Z",
+    "finished_at": "2026-09-20T10:05:20Z",
+    "attempts": 1
   },
   "output": {
     "finding_count": {
@@ -37,14 +47,14 @@
       {
         "artifact_id": "updated-graph-001",
         "type": "ACTUAL_GRAPH",
-        "uri": "artifact://A07-B07/job-incremental01/actual-graph.json",
+        "uri": "artifact://pair07/incremental01/actual.json",
         "media_type": "application/json",
         "producer_job_id": "job-incremental01"
       },
       {
         "artifact_id": "incremental-report-001",
         "type": "ERROR_REPORT",
-        "uri": "artifact://A07-B07/job-incremental01/error-report.json",
+        "uri": "artifact://pair07/incremental01/error_report.json",
         "media_type": "application/json",
         "producer_job_id": "job-incremental01"
       }

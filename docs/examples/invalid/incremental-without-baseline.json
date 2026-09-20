@@ -15,6 +15,9 @@
       "clean_command": "make clean",
       "build_command": "make -j1"
     },
-    "configuration_id": "gcc-debug"
+    "configuration_id": "gcc-debug",
+    "commit": "2222222222222222222222222222222222222222",
+    "defined_by": "A07",
+    "idempotency_key": "a07-invalid-001"
   }
 }

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://devops.nju.edu.cn/a07/contracts/error-report.schema.json",
+  "title": "A07 Dependency Error Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "repository", "configuration_id", "findings"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "commit"],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" }
+      }
+    },
+    "configuration_id": { "type": "string", "minLength": 1 },
+    "producer_job_id": { "type": "string", "pattern": "^job-[a-z0-9-]+$" },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "finding.schema.json" }
+    }
+  }
+}

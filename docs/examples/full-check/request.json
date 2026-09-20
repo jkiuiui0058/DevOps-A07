@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "trace_id": "flow-a07-001",
+  "trace_id": "trace-a07-001",
   "job_type": "FULL_CHECK",
   "input": {
     "repository": {
@@ -17,6 +17,9 @@
       "verify_command": "make test",
       "timeout_seconds": 600
     },
-    "configuration_id": "gcc-debug"
+    "configuration_id": "gcc-debug",
+    "commit": "1111111111111111111111111111111111111111",
+    "defined_by": "A07",
+    "idempotency_key": "a07-full-001"
   }
 }

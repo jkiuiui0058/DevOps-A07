@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "trace_id": "flow-a07-002",
+  "trace_id": "trace-a07-002",
   "job_type": "INCREMENTAL_CHECK",
   "input": {
     "base_commit": "1111111111111111111111111111111111111111",
@@ -22,7 +22,10 @@
     "baseline": {
       "commit": "1111111111111111111111111111111111111111",
       "configuration_id": "gcc-debug",
-      "actual_graph_uri": "artifact://A07-B07/job-full01/actual-graph.json"
-    }
+      "actual_graph_uri": "artifact://pair07/full01/actual.json"
+    },
+    "commit": "2222222222222222222222222222222222222222",
+    "defined_by": "A07",
+    "idempotency_key": "a07-incremental-001"
   }
 }

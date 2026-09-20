@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "repository": {
+    "url": "https://example.com/course/sample-c-project.git",
+    "commit": "1111111111111111111111111111111111111111"
+  },
+  "configuration_id": "gcc-debug",
+  "producer_job_id": "job-full01",
+  "findings": [
+    {
+      "finding_id": "finding-md-001",
+      "type": "MISSING",
+      "target": "build/main.o",
+      "dependency": "include/config.h",
+      "commit": "1111111111111111111111111111111111111111",
+      "configuration_id": "gcc-debug",
+      "detector": "BUILDCHECKER",
+      "position": {
+        "file": "Makefile",
+        "line": 12,
+        "declaration": "build/main.o: src/main.c"
+      },
+      "evidence_uri": "artifact://pair07/full01/evidence/md-001.json"
+    },
+    {
+      "finding_id": "finding-rd-001",
+      "type": "REDUNDANT",
+      "target": "build/main.o",
+      "dependency": "include/legacy.h",
+      "commit": "1111111111111111111111111111111111111111",
+      "configuration_id": "gcc-debug",
+      "detector": "BUILDCHECKER",
+      "evidence_uri": "artifact://pair07/full01/evidence/rd-001.json"
+    }
+  ]
+}

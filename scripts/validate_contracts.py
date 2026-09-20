@@ -31,7 +31,15 @@ def check_job(job: dict) -> None:
     if job["job_type"] not in {"FULL_CHECK", "INCREMENTAL_CHECK"}:
         raise ValueError("unsupported job_type")
 
-    common_input = {"repository", "environment", "build", "configuration_id"}
+    common_input = {
+        "repository",
+        "environment",
+        "build",
+        "configuration_id",
+        "commit",
+        "defined_by",
+        "idempotency_key",
+    }
     missing_input = common_input - job["input"].keys()
     if missing_input:
         raise ValueError(f"missing input fields: {sorted(missing_input)}")
