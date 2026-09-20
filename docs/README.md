@@ -7,8 +7,10 @@
 - `task.schema.json`：统一异步任务模型，覆盖全量检测与增量检测。
 - `artifact.schema.json`：依赖图、错误报告、日志等产物的引用格式。
 - `finding.schema.json`：Missing Dependency 和 Redundant Dependency 的统一记录格式。
+- `error-report.schema.json`：A07 输出、B07 MDFixer 消费的完整检测报告。
 - `error-codes.md`：系统执行错误的编号和语义。
 - `artifact-uri.md`：A/B 组交换文件时采用的 URI 约定。
+- `B07-INTEGRATION.md`：与配对仓库现有契约的责任边界及差异处理。
 
 ## 2. 交换样例 `examples/`
 

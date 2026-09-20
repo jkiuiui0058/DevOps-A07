@@ -11,7 +11,7 @@ artifact://{pair_id}/{job_id}/{file_name}
 示例：
 
 ```text
-artifact://A07-B07/job-full01/error-report.json
+artifact://pair07/full01/error_report.json
 ```
 
 ## 约定
@@ -21,6 +21,7 @@ artifact://A07-B07/job-full01/error-report.json
 3. 产物应记录 `producer_job_id`、媒体类型、完整 commit 和 `configuration_id`。
 4. 跨机器传输时建议附带 SHA-256。
 5. URI 到实际文件或下载地址的映射方式仍需与 B07 组确认。
+6. A07/B07 使用 `pair07` 作为 `<pair>`；`<job>` 使用生产任务的短名，完整任务编号保存在 `producer_job_id`。
 
 ## 待确认
 

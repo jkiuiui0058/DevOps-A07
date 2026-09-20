@@ -1,6 +1,6 @@
 # ADR-001：检测服务采用异步 Job 接口
 
-- 状态：已提议，待 A07/B07 共同确认
+- 状态：已接受，与 B07 ADR-0001 对齐
 - 日期：2026-09-20
 
 ## 背景
@@ -13,6 +13,7 @@
 2. 客户端通过 `GET /v1/jobs/{job_id}` 查询状态。
 3. 完成后响应返回产物元数据和 Artifact URI。
 4. MD/RD 属于成功的分析结果，不会让任务变成 `FAILED`。
+5. 创建请求携带 `idempotency_key`；完整 Job 使用 `trace-*`、`job-*` 标识，并记录 `execution` 时间信息。
 
 建议端点为 `POST /v1/full-check-jobs`、`POST /v1/incremental-check-jobs` 和 `GET /v1/jobs/{job_id}`。
 
