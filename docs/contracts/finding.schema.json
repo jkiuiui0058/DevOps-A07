@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.edu/devops-a07/finding.schema.json",
+  "title": "A07 Dependency Finding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "finding_id",
+    "type",
+    "target",
+    "dependency",
+    "commit",
+    "configuration_id",
+    "detector"
+  ],
+  "properties": {
+    "finding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "enum": ["MISSING", "REDUNDANT"]
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dependency": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{40}$"
+    },
+    "configuration_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "detector": {
+      "enum": ["BUILD_CHECKER", "E_CHECKER", "INSTRUCTOR_ORACLE"]
+    },
+    "evidence_uri": {
+      "type": "string",
+      "pattern": "^artifact://"
+    },
+    "declared_at": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file"],
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}
