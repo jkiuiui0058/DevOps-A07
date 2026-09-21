@@ -38,11 +38,6 @@
     "attempts": 1
   },
   "output": {
-    "finding_count": {
-      "current": 1,
-      "introduced": 1,
-      "resolved": 0
-    },
     "artifacts": [
       {
         "artifact_id": "updated-graph-001",

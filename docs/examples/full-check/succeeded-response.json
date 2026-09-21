@@ -32,15 +32,18 @@
     "attempts": 1
   },
   "output": {
-    "finding_count": {
-      "missing": 1,
-      "redundant": 0
-    },
     "artifacts": [
       {
         "artifact_id": "actual-graph-001",
         "type": "ACTUAL_GRAPH",
         "uri": "artifact://pair07/full01/actual.json",
+        "media_type": "application/json",
+        "producer_job_id": "job-full01"
+      },
+      {
+        "artifact_id": "declared-graph-001",
+        "type": "DECLARED_GRAPH",
+        "uri": "artifact://pair07/full01/declared.json",
         "media_type": "application/json",
         "producer_job_id": "job-full01"
       },
