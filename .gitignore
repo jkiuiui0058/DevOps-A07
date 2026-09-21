@@ -16,3 +16,7 @@ tmp/
 .venv/
 __pycache__/
 *.pyc
+
+# Personal study material; keep local only
+参考资料/
+本地笔记/
