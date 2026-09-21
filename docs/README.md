@@ -11,6 +11,7 @@
 - `error-codes.md`：系统执行错误的编号和语义。
 - `artifact-uri.md`：A/B 组交换文件时采用的 URI 约定。
 - `B07-INTEGRATION.md`：与配对仓库现有契约的责任边界及差异处理。
+- [`B07-CONFIRMATION-RECORD.md`](contracts/B07-CONFIRMATION-RECORD.md)：B07 已确认的 ERROR_REPORT 消费约束与 E2 范围。
 
 ## 2. 交换样例 `examples/`
 
@@ -23,6 +24,9 @@
 ## 3. 设计决策 `adr/`
 
 记录关键方案、选择理由、替代方案和代价。改变公共字段、状态或产物读取方式时，应新增或更新 ADR。
+
+- [`ADR-002-job-query-response.md`](adr/ADR-002-job-query-response.md)：A07 提议的完整 Job 查询响应，待 B07 确认。
+- [`ADR-003-pair07-artifact-uri.md`](adr/ADR-003-pair07-artifact-uri.md)：已记录的 pair07 URI 语法；映射、治理与鉴权待联合确认。
 
 ## 4. 计划与过程记录
 
