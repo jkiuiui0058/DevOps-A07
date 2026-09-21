@@ -11,6 +11,7 @@
 - `error-codes.md`：系统执行错误的编号和语义。
 - `artifact-uri.md`：A/B 组交换文件时采用的 URI 约定。
 - `B07-INTEGRATION.md`：与配对仓库现有契约的责任边界及差异处理。
+- `B07-README-UPDATE.md`：已提供 A07 地址及 `pair07` 命名，供 B07 更新 README。
 
 ## 2. 交换样例 `examples/`
 
@@ -42,4 +43,5 @@
 
 ```text
 python scripts/validate_contracts.py
+../E2-B07/.venv/bin/python scripts/validate_against_b07.py --b07-root ../E2-B07
 ```
