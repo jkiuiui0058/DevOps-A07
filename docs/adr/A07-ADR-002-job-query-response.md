@@ -1,11 +1,11 @@
-# ADR-002：Job 查询返回完整持久化资源
+# A07-ADR-002：Job 查询返回完整持久化资源
 
 - 状态：提议，待 B07 确认
 - 日期：2026-09-21
 
 ## 背景
 
-[ADR-001](ADR-001-asynchronous-job-api.md) 确定通过 `GET /v1/jobs/{job_id}` 查询任务。A07 的 [`task.schema.json`](../contracts/task.schema.json) 区分创建请求与持久化 Job，但 B07 当前的查询视图样例与 A07 成功响应仍有差异。
+[A07:ADR-001](A07-ADR-001-asynchronous-job-api.md) 确定通过 `GET /v1/jobs/{job_id}` 查询任务。A07 的 [`task.schema.json`](../contracts/task.schema.json) 区分创建请求与持久化 Job，但 B07 当前的查询视图样例与 A07 成功响应仍有差异。
 
 ## 决策
 

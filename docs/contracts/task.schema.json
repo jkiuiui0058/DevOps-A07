@@ -66,6 +66,7 @@
           "required": ["code", "message"],
           "properties": {
             "code": {
+              "description": "A07 在 schema_version 1.0 中当前会产生的错误码；消费者不得把此枚举当作可接收错误码的封闭集合。",
               "enum": ["ENV_3002", "EXEC_4002", "ANALYSIS_5001"]
             },
             "message": {
