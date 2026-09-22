@@ -27,4 +27,4 @@ B07 组的仓库地址：[Cedar-bog/DevOps-B07](https://github.com/Cedar-bog/Dev
 - [PAIR07 共同决策](docs/adr/PAIR07-ADR-001-artifact-governance-and-error-domains.md)
 - [B07 校验结果](docs/validation/B07-VALIDATION-RESULTS.md)
 - [E2 Backlog](docs/planning/BACKLOG.md)
-- [AI 使用记录](docs/AI_USAGE.md)与[个人贡献记录](docs/contributions/README.md)
+- [AI 使用记录](docs/AI_USAGE.md)与[个人贡献记录](docs/contributions/E2贡献汇总.md)

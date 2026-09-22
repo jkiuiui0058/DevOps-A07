@@ -35,7 +35,7 @@
 
 - `planning/BACKLOG.md`：E2 工作项、负责人和验收条件。
 - `AI_USAGE.md`：AI 建议、人工判断及验证记录。
-- `contributions/README.md`：成员贡献和提交证据。
+- `contributions/E2贡献汇总.md`：成员贡献和提交证据。
 
 ## E2 最小验收
 

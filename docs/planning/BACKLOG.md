@@ -11,7 +11,7 @@
 | E2-07 | 校验有效与无效样例 |`scripts/validate_against_b07.py`、`validation/B07-VALIDATION-RESULTS.md` | 有效样例通过，反例失败 | DONE |
 | E2-08 | 确认错误码和失败行为 |`error-codes.md` | 前缀归属和消费者容忍未知码已确认 | DONE |
 | E2-09 | 记录架构决策 |`adr/` | 异步任务模型已与 B07 对齐 | DONE |
-| E2-10 | 补全 AI 使用与个人贡献 |`AI_USAGE.md`、`contributions/README.md` | 建议、人工判断、验证和提交可追溯 | 待提交 |
+| E2-10 | 补全 AI 使用与个人贡献 |`AI_USAGE.md`、`contributions/E2贡献汇总.md` | 建议、人工判断、验证和提交可追溯 | DONE |
 
 ## E3 准备
 
