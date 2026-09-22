@@ -26,8 +26,10 @@
 
 记录关键方案、选择理由、替代方案和代价。改变公共字段、状态或产物读取方式时，应新增或更新 ADR。
 
-- [`ADR-002-job-query-response.md`](adr/ADR-002-job-query-response.md)：A07 提议的完整 Job 查询响应，待 B07 确认。
-- [`ADR-003-pair07-artifact-uri.md`](adr/ADR-003-pair07-artifact-uri.md)：已记录的 pair07 URI 语法；映射、治理与鉴权待联合确认。
+- [`A07-ADR-001-asynchronous-job-api.md`](adr/A07-ADR-001-asynchronous-job-api.md)：A07 的异步 Job 接口决策。
+- [`A07-ADR-002-job-query-response.md`](adr/A07-ADR-002-job-query-response.md)：A07 提议的完整 Job 查询响应，待 B07 确认。
+- [`A07-ADR-003-pair07-artifact-uri.md`](adr/A07-ADR-003-pair07-artifact-uri.md)：A07 记录的 pair07 URI 语法。
+- [`PAIR07-ADR-001-artifact-governance-and-error-domains.md`](adr/PAIR07-ADR-001-artifact-governance-and-error-domains.md)：双方对 Artifact 读取、治理、权限和错误码分域的共同决策。
 
 ## 4. 计划与过程记录
 
