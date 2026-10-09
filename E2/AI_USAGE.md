@@ -4,7 +4,7 @@
 
 | 日期 | 工具/模型 | 任务 | AI 建议摘要 | 人工决定与理由 | 关联文件/提交 | 验证结果 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09-20 | Codex | 初始化 E2 仓库结构 | 按契约、样例、ADR、计划和贡献记录分区；采用异步 Job 模型 | 暂时采纳为初稿，字段和 URI 仍需与 B07 确认 | 当前初始化提交 | 待运行 Schema 校验 |
+| 2026-09-20 | Codex | 初始化 E2 仓库结构 | 按契约、样例、ADR、计划和贡献记录分区；采用异步 Job 模型 | 暂时采纳为初稿，字段和 URI 仍需与 B07 确认 | 当前初始化提交 | 后续契约校验已通过 |
 | 2026-09-20 | Codex + GitHub | 对齐 B07 接口契约 | 区分创建请求与完整 Job；采用 B07 的公共状态、错误码、Artifact 结构和 MDFixer 消费约束 | 采纳，并由 A07 补充完整 ERROR_REPORT Schema；实际 Artifact 解析器仍待双方确认 | `contracts/B07-INTEGRATION.md` 及相关 Schema | 契约样例冒烟检查通过 |
 | 2026-09-22 | Codex + GitHub | 确认 J1–J5 与完成 C8–C10 | 建议采用 HTTP Artifact 入口、平台统一 GC、错误码前缀分域，并依据 B07 DRAFT 样例建立字段映射 | 人工确认采用推荐方案；E2 只形成可解释的读取契约，不部署服务；字段只采用 B07 样例中真实存在的来源 | `adr/PAIR07-ADR-001-*`、`contracts/artifact-uri.md`、`contracts/B07-INTEGRATION.md` | JSON 语法、A07 正反样例和文档差异检查通过 |
 

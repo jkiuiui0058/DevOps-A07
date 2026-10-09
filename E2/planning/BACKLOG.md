@@ -7,7 +7,7 @@
 | E2-03 | 完善全量检测样例 |`examples/full-check/` | 请求、受理响应和结果响应可解释 | DONE |
 | E2-04 | 完善增量检测样例 |`examples/incremental-check/` | 缺 baseline 时被拒绝 | DONE |
 | E2-05 | 定义 MD/RD 报告 |`finding.schema.json`、`error-report.schema.json` | MISSING 含 position，MDFixer 能定位声明 | DONE |
-| E2-06 | 确认 Artifact URI 实现 | ADR 或契约更新 | B07 能实际读取一份 A07 产物 | BLOCKED |
+| E2-06 | 确认 Artifact URI 读取与治理契约 | `adr/PAIR07-ADR-001-artifact-governance-and-error-domains.md` | PAIR07 ADR 已约定 HTTP 读取、保留期与权限；服务与 GC 实现留至 E12 | DONE |
 | E2-07 | 校验有效与无效样例 |`scripts/validate_against_b07.py`、`validation/B07-VALIDATION-RESULTS.md` | 有效样例通过，反例失败 | DONE |
 | E2-08 | 确认错误码和失败行为 |`error-codes.md` | 前缀归属和消费者容忍未知码已确认 | DONE |
 | E2-09 | 记录架构决策 |`adr/` | 异步任务模型已与 B07 对齐 | DONE |
