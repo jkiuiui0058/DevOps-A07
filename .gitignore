@@ -20,3 +20,6 @@ __pycache__/
 # Personal study material; keep local only
 参考资料/
 本地笔记/
+
+# E3 role B is an independent nested repository; handoff lives under E3/handoff/B/
+/E3/B/
