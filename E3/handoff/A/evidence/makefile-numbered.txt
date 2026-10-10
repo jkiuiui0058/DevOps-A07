@@ -1,0 +1,17 @@
+     1	CC ?= cc
+     2	CFLAGS ?= -O0
+     3	
+     4	.PHONY: all clean
+     5	
+     6	all: app
+     7	
+     8	app: main.o
+     9		$(CC) main.o -o app
+    10	
+    11	# config.h is included by main.c but intentionally omitted: this is the MD fixture.
+    12	# unused.h is declared but not included by main.c: this is the RD fixture.
+    13	main.o: main.c unused.h
+    14		$(CC) $(CFLAGS) -c main.c -o main.o
+    15	
+    16	clean:
+    17		rm -f *.o app

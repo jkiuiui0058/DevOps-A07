@@ -1,0 +1,17 @@
+{
+  "fixture_name": "A07 E3 MD/RD GNU Make baseline",
+  "parent_repository": "https://github.com/jkiuiui0058/DevOps-A07",
+  "fixed_parent_commit": "A07_FIXED_COMMIT_PLACEHOLDER",
+  "fixture_bundle_commit": "1cdad57d56780acd437f5f16d431e855328a7c51",
+  "fixture_bundle": "repository.bundle",
+  "configuration_id": "a07-md-rd-gcc-o0",
+  "project_source": "A07-created minimal GNU Make/C fixture for the E3 course exercise",
+  "license": "LICENSE in source/",
+  "commands": {
+    "build": "make",
+    "clean": "make clean",
+    "verify": "./app"
+  },
+  "analysis_scope": "Project source headers only; system headers such as stdio.h are excluded.",
+  "fixed_commit_note": "fixed_parent_commit identifies the A07 repository revision containing this fixture; fixture_bundle_commit identifies the independent source history revision."
+}
