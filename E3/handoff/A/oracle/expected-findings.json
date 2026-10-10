@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "repository": {
     "url": "https://github.com/jkiuiui0058/DevOps-A07",
-    "commit": "A07_FIXED_COMMIT_PLACEHOLDER"
+    "commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92"
   },
   "configuration_id": "a07-md-rd-gcc-o0",
   "producer_job_id": "job-a07-e3-md-rd-oracle",
@@ -12,7 +12,7 @@
       "type": "MISSING",
       "target": "main.o",
       "dependency": "config.h",
-      "commit": "A07_FIXED_COMMIT_PLACEHOLDER",
+      "commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92",
       "configuration_id": "a07-md-rd-gcc-o0",
       "detector": "INSTRUCTOR_ORACLE",
       "position": {
@@ -27,7 +27,7 @@
       "type": "REDUNDANT",
       "target": "main.o",
       "dependency": "unused.h",
-      "commit": "A07_FIXED_COMMIT_PLACEHOLDER",
+      "commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92",
       "configuration_id": "a07-md-rd-gcc-o0",
       "detector": "INSTRUCTOR_ORACLE",
       "position": {

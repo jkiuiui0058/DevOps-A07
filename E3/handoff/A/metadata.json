@@ -1,7 +1,7 @@
 {
   "fixture_name": "A07 E3 MD/RD GNU Make baseline",
   "parent_repository": "https://github.com/jkiuiui0058/DevOps-A07",
-  "fixed_parent_commit": "A07_FIXED_COMMIT_PLACEHOLDER",
+  "fixed_parent_commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92",
   "fixture_bundle_commit": "1cdad57d56780acd437f5f16d431e855328a7c51",
   "fixture_bundle": "repository.bundle",
   "configuration_id": "a07-md-rd-gcc-o0",
