@@ -1,0 +1,6 @@
+PASS valid: E2/examples/full-check/request.json
+PASS valid: E2/examples/full-check/accepted-response.json
+PASS valid: E2/examples/full-check/succeeded-response.json
+PASS valid: E2/examples/incremental-check/request.json
+PASS valid: E2/examples/incremental-check/succeeded-response.json
+PASS rejected: E2/examples/invalid/incremental-without-baseline.json

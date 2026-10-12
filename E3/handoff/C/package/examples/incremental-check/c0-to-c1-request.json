@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "trace_id": "trace-a07-e3-c0-c1",
+  "job_type": "INCREMENTAL_CHECK",
+  "input": {
+    "base_commit": "6125b05acd59d8b1d5754ede7826bd51007d3689",
+    "repository": {
+      "url": "artifact://pair07/e3-b/repository.bundle",
+      "commit": "c2159ef34b7787ddc936da8a0c0ef7bb0d35f3bc"
+    },
+    "environment": {
+      "image": "a07-e3-unified:ubuntu24.04",
+      "project_root": "/tmp/e3-b-restored"
+    },
+    "build": {
+      "clean_command": "make clean",
+      "build_command": "make -j1",
+      "verify_command": "./app",
+      "timeout_seconds": 600
+    },
+    "configuration_id": "a07-e3-b-gcc-o0",
+    "baseline": {
+      "commit": "6125b05acd59d8b1d5754ede7826bd51007d3689",
+      "configuration_id": "a07-e3-b-gcc-o0",
+      "actual_graph_uri": "artifact://pair07/e3-c0/actual.json"
+    },
+    "commit": "c2159ef34b7787ddc936da8a0c0ef7bb0d35f3bc",
+    "defined_by": "A07",
+    "idempotency_key": "a07-e3-c0-c1"
+  }
+}

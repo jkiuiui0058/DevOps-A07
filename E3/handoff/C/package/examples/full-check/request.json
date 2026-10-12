@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "trace_id": "trace-a07-e3-full-md-rd",
+  "job_type": "FULL_CHECK",
+  "input": {
+    "repository": {
+      "url": "https://github.com/jkiuiui0058/DevOps-A07",
+      "commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92"
+    },
+    "environment": {
+      "image": "a07-e3-unified:ubuntu24.04",
+      "project_root": "/lab/A/source"
+    },
+    "build": {
+      "clean_command": "make clean",
+      "build_command": "make -j1",
+      "verify_command": "./app",
+      "timeout_seconds": 600
+    },
+    "configuration_id": "a07-md-rd-gcc-o0",
+    "commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92",
+    "defined_by": "A07",
+    "idempotency_key": "a07-e3-full-md-rd"
+  }
+}

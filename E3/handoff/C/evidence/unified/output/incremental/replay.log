@@ -1,0 +1,52 @@
+=== C0 CLEAN BUILD ===
+Note: switching to 'C0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 6125b05 C0: baseline - BASE=10, MODE=0 default
+commit=6125b05acd59d8b1d5754ede7826bd51007d3689
+rm -f *.o app
+cc -c main.c -o main.o
+cc main.o -o app
+C0 output=10
+=== C1 CLEAN BUILD ===
+Previous HEAD position was 6125b05 C0: baseline - BASE=10, MODE=0 default
+HEAD is now at c2159ef C1: add feature.h include - missing dependency in Makefile
+commit=c2159ef34b7787ddc936da8a0c0ef7bb0d35f3bc
+rm -f *.o app
+cc -c main.c -o main.o
+cc main.o -o app
+C1 clean output=12
+=== C1 MISSING DEPENDENCY ===
+feature.h=#define FEATURE 3make: 'app' is up to date.
+C1 incremental output=12
+=== PREPARE C1 OLD ARTIFACT ===
+HEAD is now at c2159ef C1: add feature.h include - missing dependency in Makefile
+rm -f *.o app
+cc -c main.c -o main.o
+cc main.o -o app
+C1 old artifact output=12
+=== C2 INCREMENTAL WITHOUT CLEAN ===
+Previous HEAD position was c2159ef C1: add feature.h include - missing dependency in Makefile
+HEAD is now at 7a04ab1 C2: add -DMODE=7 to CFLAGS - compile command changes
+commit=7a04ab14101f4618a8849b831e342f9800164369
+make: 'app' is up to date.
+C2 incremental output=12
+=== C2 CLEAN BUILD ===
+rm -f *.o app
+cc -O0 -DMODE=7 -c main.c -o main.o
+cc main.o -o app
+C2 clean output=19

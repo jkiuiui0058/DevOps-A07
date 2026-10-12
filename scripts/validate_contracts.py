@@ -5,14 +5,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VALID_EXAMPLES = [
-    ROOT / "docs" / "examples" / "full-check" / "request.json",
-    ROOT / "docs" / "examples" / "full-check" / "accepted-response.json",
-    ROOT / "docs" / "examples" / "full-check" / "succeeded-response.json",
-    ROOT / "docs" / "examples" / "incremental-check" / "request.json",
-    ROOT / "docs" / "examples" / "incremental-check" / "succeeded-response.json",
+    ROOT / "E2" / "examples" / "full-check" / "request.json",
+    ROOT / "E2" / "examples" / "full-check" / "accepted-response.json",
+    ROOT / "E2" / "examples" / "full-check" / "succeeded-response.json",
+    ROOT / "E2" / "examples" / "incremental-check" / "request.json",
+    ROOT / "E2" / "examples" / "incremental-check" / "succeeded-response.json",
 ]
 INVALID_EXAMPLE = (
-    ROOT / "docs" / "examples" / "invalid" / "incremental-without-baseline.json"
+    ROOT / "E2" / "examples" / "invalid" / "incremental-without-baseline.json"
 )
 
 

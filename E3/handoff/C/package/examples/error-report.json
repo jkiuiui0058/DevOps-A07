@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "repository": {
+    "url": "https://github.com/jkiuiui0058/DevOps-A07",
+    "commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92"
+  },
+  "configuration_id": "a07-md-rd-gcc-o0",
+  "producer_job_id": "job-a07-e3-md-rd-oracle",
+  "findings": [
+    {
+      "finding_id": "a07-md-001",
+      "type": "MISSING",
+      "target": "main.o",
+      "dependency": "config.h",
+      "commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92",
+      "configuration_id": "a07-md-rd-gcc-o0",
+      "detector": "INSTRUCTOR_ORACLE",
+      "position": {
+        "file": "Makefile",
+        "line": 13,
+        "declaration": "main.o: main.c unused.h"
+      },
+      "evidence_uri": "artifact://pair07/e3-md-rd/logs/md-incremental.log"
+    },
+    {
+      "finding_id": "a07-rd-001",
+      "type": "REDUNDANT",
+      "target": "main.o",
+      "dependency": "unused.h",
+      "commit": "2f9a59af755c9a11267c2055c79b8b3faaefde92",
+      "configuration_id": "a07-md-rd-gcc-o0",
+      "detector": "INSTRUCTOR_ORACLE",
+      "position": {
+        "file": "Makefile",
+        "line": 13,
+        "declaration": "main.o: main.c unused.h"
+      },
+      "evidence_uri": "artifact://pair07/e3-md-rd/logs/rd-incremental.log"
+    }
+  ]
+}

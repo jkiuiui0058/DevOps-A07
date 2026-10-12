@@ -1,0 +1,38 @@
+== baseline: clean build ==
+rm -f *.o app
+cc -O0 -c main.c -o main.o
+cc main.o -o app
+baseline output: 10
+== MD: edit config.h, incremental build ==
+make: Nothing to be done for 'all'.
+MD incremental output: 10
+== MD: clean build after config.h edit ==
+rm -f *.o app
+cc -O0 -c main.c -o main.o
+cc main.o -o app
+MD clean output: 12
+== RD: restore config.h, clean build, edit unused.h ==
+rm -f *.o app
+cc -O0 -c main.c -o main.o
+cc main.o -o app
+GNU Make 4.3
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Reading makefiles...
+Updating makefiles....
+Updating goal targets....
+ File 'all' does not exist.
+     Prerequisite 'unused.h' is newer than target 'main.o'.
+    Must remake target 'main.o'.
+cc -O0 -c main.c -o main.o
+    Successfully remade target file 'main.o'.
+   Prerequisite 'main.o' is newer than target 'app'.
+  Must remake target 'app'.
+cc main.o -o app
+  Successfully remade target file 'app'.
+Must remake target 'all'.
+Successfully remade target file 'all'.
+RD incremental output: 10
