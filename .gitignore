@@ -23,3 +23,6 @@ __pycache__/
 
 # E3 role B is an independent nested repository; handoff lives under E3/handoff/B/
 /E3/B/
+
+# E3 C evidence: ignore intermediate and bulky evidence, keep curated final outputs
+E3/handoff/C/**
