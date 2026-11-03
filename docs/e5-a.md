@@ -12,3 +12,11 @@ RD(main.o, unused.h)
 ```
 
 完整原始 trace、Make 数据库和构建日志保存在被 Git 忽略的 `E5/work/` 本地备份及课程归档包中。
+
+提交记录：
+
+- GitHub PR：[PR #1](https://github.com/jkiuiui0058/DevOps-A07/pull/1)，已合并；
+- PR 最终提交：`445528d4d08ab9949b8d74475e1fa2ead84e3b86`；
+- 合并提交：`3b43c97591ef57d66fd1e6fc2ae8b9fb33090c9a`；
+- 作业归档：`A07-E5.zip`；(本地保存提交)
+- SHA256：`278d7d9c71c2742a4f5941f936f1f42d2cbbf5ec503def30591218a7f71dfbff`。

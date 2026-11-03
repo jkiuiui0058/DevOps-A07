@@ -11,6 +11,10 @@
 |GitHub 仓库|`https://github.com/jkiuiui0058/DevOps-A07`|
 |运行分支|`e5`|
 |源码提交|`113712960b142b34bc226eb73e8a2a77a1c01f98`|
+|PR|[PR #1：E5: reproduce BuildChecker MD/RD case](https://github.com/jkiuiui0058/DevOps-A07/pull/1)|
+|PR 最终提交|`445528d4d08ab9949b8d74475e1fa2ead84e3b86`|
+|合并提交|`3b43c97591ef57d66fd1e6fc2ae8b9fb33090c9a`|
+|合并时间|2026-11-03 21:12:37（北京时间）|
 |镜像标签|`course1027-buildchecker:241250082`|
 |镜像 ID|`sha256:09f5e03129702fd74d193212ec529ade0329e692c20ab83593a24db306c3169b`|
 |镜像架构|`linux/amd64`|
@@ -204,7 +208,17 @@ E5 阶段采用人工对照 trace 与 Make 数据库得出结论，尚未在本�
 |源码版本|`work/e5-formal-01/source-commit.txt`|`1137129...`|
 |镜像版本|`work/e5-formal-01/image-id.txt`|`sha256:09f5e...`|
 
-## 11. 未完成项
+## 11. 提交与归档
 
-- 最终证据归档文件名与 SHA256 尚待填写；
-- PR URL 和合并提交尚待创建后填写；
+GitHub 代码与文档通过 [PR #1](https://github.com/jkiuiui0058/DevOps-A07/pull/1) 从 `e5` 分支合并到 `main`。该 PR 的最终分支提交为 `445528d4d08ab9949b8d74475e1fa2ead84e3b86`，合并提交为 `3b43c97591ef57d66fd1e6fc2ae8b9fb33090c9a`。
+
+课程网站提交的 E5 作业归档及校验值为：
+
+|项目|值|
+|---|---|
+|归档文件|`A07-E5.zip`|
+|SHA256 文件|`A07-E5.zip.sha256`|
+|SHA256|`278d7d9c71c2742a4f5941f936f1f42d2cbbf5ec503def30591218a7f71dfbff`|
+|本地校验|PASS，计算值与 `.sha256` 文件一致|
+
+归档包含 E5 报告、提交信息、构建与单元测试证据，以及 `e5-formal-01` 的输入副本、完整 trace、Make 数据库、程序输出、命令与退出码。至此，本次 E5 作业要求的 GitHub 记录、人工复现报告和原始证据归档均已完成。
