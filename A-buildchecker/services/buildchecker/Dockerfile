@@ -12,7 +12,13 @@ ENV LC_ALL=C.UTF-8 \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-RUN apt-get update \
+RUN sed -i \
+      -e 's|http://deb.debian.org|https://repo.huaweicloud.com|g' \
+      -e 's|https://deb.debian.org|https://repo.huaweicloud.com|g' \
+      -e 's|http://security.debian.org|https://repo.huaweicloud.com|g' \
+      -e 's|https://security.debian.org|https://repo.huaweicloud.com|g' \
+      /etc/apt/sources.list.d/debian.sources \
+ && apt-get update \
  && apt-get install -y --no-install-recommends gcc make libc6-dev strace git \
  && rm -rf /var/lib/apt/lists/* \
  && dpkg-query -W -f='${Package}=${Version}\n' gcc make libc6-dev strace git > /opt/toolchain.lock \
