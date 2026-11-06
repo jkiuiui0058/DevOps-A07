@@ -1,0 +1,14 @@
+E6 A角色本地离线单元测试日志
+
+记录来源：协调者实际执行后的 bash 工具输出转存，不是执行时自动重定向生成的日志。本次仅保存已提供的输出，未重跑测试。
+工作目录：D:\study\SE\DevOps\DevOps-A07\A-buildchecker\services\buildchecker
+实际命令：python3 -m unittest discover -s tests -p test_e6_a.py -v
+工具执行状态：成功。
+
+原始输出如下：
+test_two_recipe_jobs_keep_inputs_processes_and_evidence_separate (test_e6_a.TestE6A.test_two_recipe_jobs_keep_inputs_processes_and_evidence_separate) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.021s
+
+OK
