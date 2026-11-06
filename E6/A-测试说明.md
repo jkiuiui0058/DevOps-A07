@@ -57,3 +57,13 @@ docker run --rm --network none sha256:65e8007d888e74e3d8bfe059f96fbb4e589cae284e
 远端日志目录为 `/root/241098114/e6-env-20261106-025440/work/e6-a03-20261106-111116/`，完整复制到本地 `A-buildchecker/work/e6-a-cloud-20261106-111116/a03/`。`command.txt` 保存命令，`stdout.log:5–9` 保存收集及通过结果，`stderr.log` 保存标准错误，`exit-code.txt:1` 保存 0。本次日志使用实际重定向保存，不是早期工具输出转存。源码、镜像和本地测试文件的 SHA256 均为 `979169aa38d5efcfff0114f80bf3dee1cde100ae621027acf3b4f78e24ff8318`，版本边界见 [A-云端证据索引.md](A-云端证据索引.md)。
 
 **A03 的运行验证已完成，现已获准在个人分支 e6/a 本地提交，提交 SHA 由本次提交生成，不在文档中自引用；仍不整体标 DONE。** 采集阶段同时完成 A01/A02 的 before 真实证据核对，未运行 after/A04、未重建镜像、未提交 Git。正式已提交版本及最终集成重验仍待完成。
+
+## 个人提交关联复检
+
+上述提交待生成的描述属于历史阶段；个人贡献现已提交为 `39f8c328e6d3ccd6e9e149468b17bb4a8b9702ce`，分支 `e6/a`。新增测试在提交/工作树/云源码/镜像中原始字节一致，其余 15 个相关文件仅 CRLF/LF 有别；严格仅替换 CRLF→LF 后内容逐字节一致。这里关联的是该限定行尾映射下的已提交逻辑，**不是提交原始字节运行证明，也不是最终集成验收**。
+
+使用上述相同固定镜像再次执行 `docker run --rm --network none <固定镜像ID> pytest tests/test_e6_a.py -v`，结果 `collected 1 item`、`1 passed in 0.02s`，实际退出码 **0**。新日志在远端 `/root/241098114/e6-env-20261106-025440/work/e6-a-personal-39f8c328-5db6d4f1/a03/`，本地为 `A-buildchecker/work/e6-a-commit-39f8c328-229d0f61/personal-recheck-ea6309c3/run/a03/`；其中 `stdout.log:5–9` 为单项结果，`exit-code.json` 为 0，`command.json` 保存完整命令。
+
+同轮全新 before 为远端 `work/e6-20261106-113348-785abc/`（相对云根），已核对 SUCCEEDED、clean/build 0、CLI 1 和精确两条预期发现。本地完整新证据、行尾边界及 40 个复制文件哈希校验见 [A-云端证据索引.md](A-云端证据索引.md) 第 5 节。旧单项日志和旧详细 PID 核对仍归属于各自旧采集目录，不被替换。
+
+A01–A03 个人工作已完成，包括测试、机制与真实证据核对及贡献 SHA。本次未运行 after/A04、未改测试/生产源码或 fixture、未构建镜像、未再次提交或推送；本节与索引的追加修改留在工作区。C 的后续最终集成验收不属于本次个人待办。
