@@ -2,8 +2,7 @@
 import tempfile
 import unittest
 from pathlib import Path
-from buildchecker.fullcheck import Unsupported, analyze, declaration_graph, execution_graph
-
+from buildchecker.fullcheck import Unsupported, analyze, declaration_graph, execution_graph, full_check
 
 class TestFullCheck(unittest.TestCase):
     def setUp(self):
@@ -109,6 +108,23 @@ class TestFullCheck(unittest.TestCase):
         with self.assertRaisesRegex(Unsupported, "Files section"):
             declaration_graph(db, self.root)
 
+    def test_failed_clean_preserves_failed_report(self):
+        fixture = self.folder / "fixture"
+        fixture.mkdir()
+        (fixture / "Makefile").write_text(
+            "clean:\n\t@exit 7\napp:\n\t@true\n",
+            encoding="utf-8",
+        )
+        output = self.folder / "result"
+
+        report = full_check(fixture, output)
+
+        self.assertEqual(report["status"], "FAILED")
+        self.assertEqual(report["error_code"], "CHECK_FAILED")
+        self.assertEqual(report["clean_exit_code"], 2)
+        self.assertEqual(report["findings"], [])
+        self.assertTrue((output / "clean.log").is_file())
+        self.assertTrue((output / "findings.json").is_file())
 
 if __name__ == "__main__":
     unittest.main()
