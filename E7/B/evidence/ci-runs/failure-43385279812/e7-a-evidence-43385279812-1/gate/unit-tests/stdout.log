@@ -1,0 +1,17 @@
+......F.............                                                     [100%]
+=================================== FAILURES ===================================
+_ TestE7BServiceBoundary.test_teaching_detector_version_is_explicit_for_ci_provenance _
+
+self = <test_e7_b.TestE7BServiceBoundary testMethod=test_teaching_detector_version_is_explicit_for_ci_provenance>
+
+    def test_teaching_detector_version_is_explicit_for_ci_provenance(self):
+        """The CI record can identify the detector implementation it exercised."""
+>       self.assertEqual(VERSION, "1")
+E       AssertionError: '0.2.0-teaching' != '1'
+E       - 0.2.0-teaching
+E       + 1
+
+tests/test_e7_b.py:22: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_e7_b.py::TestE7BServiceBoundary::test_teaching_detector_version_is_explicit_for_ci_provenance
+1 failed, 19 passed in 0.07s

@@ -1,5 +1,5 @@
 编号,负责人,项目,状态,实际结果,证据路径或URL,说明
-B01,B,服务边界测试与CI接入,PASS,新增2项服务测试；服务测试15项通过、独立Oracle测试7项通过、语法检查通过,PR与Actions检查,workflow位于仓库根目录且使用A-buildchecker构建上下文
-B02,B,首次正常main CI,PENDING,待本PR合并后触发,GitHub Actions,不能在未合并的main上伪造成功记录
-B03,B,保护规则及同一PR失败恢复,PENDING,待B02完成后执行,E7/B/同一PR失败恢复操作记录.md,必须在同一个PR内完成错误断言失败与恢复
-B04,B,CI成品包,PASS,报告/验收记录/操作记录已随PR提交,E7/B/,云端证据完成后补充链接
+B01,B,服务边界测试与CI接入,PASS,新增2项服务测试；服务测试17项通过、独立Oracle测试6项通过、语法检查通过,PR #5,workflow位于仓库根目录且使用A-buildchecker构建上下文
+B02,B,首次正常main CI,PASS,main的完整质量门禁通过,run 43385151022；commit 13ac0aa,artifact已下载并索引
+B03,B,保护规则及同一PR失败恢复,PARTIAL,PR #6 已真实失败并在同一PR恢复成功,E7/B/CI证据索引.md,当前身份无admin；保护规则和实际策略拒绝仍PENDING
+B04,B,CI成品包,PASS,normal/failure/recovery artifact已归档,E7/B/evidence/ci-runs/,PR #6 合并记录待最终补填
