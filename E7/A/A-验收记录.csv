@@ -1,0 +1,5 @@
+编号,负责人,项目,状态,实际结果,证据路径或URL,说明
+A01,A,独立jobs同target边界测试,PASS,新增1项unittest；本地及Linux通过；正式源码e779b3130cd9b91eba4c6e54f4a6a85f5606b99c,E7/A/A-测试说明.md；E7/A/08-cloud-tests.log,区别于双job不同target及单job多output；合成trace不是构建证据
+A02,A,真实重复构建与fixed验证,PASS,3次original输入hash相同且精确MD/RD；fixed仅Makefile变化且clean/build均0 findings空,E7/A/A-本地验证报告.md；E7/A/07-trace-anchors.json；E7/A/evidence/E7-A-20261113T075315Z.tar.gz,原fixture不变；Makefile文本重写同时CRLF转LF；原始trace保留
+A03,A,故障门禁与八项完整运行,PASS,21项服务及6项独立判定通过；完整8项通过；JSONCSV逐字段一致；真实构建失败码2,E7/A/06-cloud-verification.json；E7/A/08-cloud-tests.log；E7/A/evidence/E7-A-20261113T075315Z.tar.gz,build-failed与unsupported及timeout为真实运行；A不负责CI
+A04,A,个人报告及可获取证据归档,PARTIAL,报告与完整交付包已就绪；259文件hash及递归805文件扫描通过；个人PR待创建,E7/A/A-个人记录.md；E7/A/A-云端证据索引.md；E7/A/evidence/PACKAGE.sha256；E7/A/09-delivery-verification.log,本轮未commit/push/PR；最终提交发布待用户处理；不提前宣称交付完成
