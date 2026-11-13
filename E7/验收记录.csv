@@ -6,12 +6,13 @@ A04,A,交付包及贡献合并,PASS,A交付包验证通过且PR7合并已见本�
 B01,B,新增测试与根目录CI接入,PASS,workflow已适配组件目录且真实CI运行通过,.github/workflows/e7-quality-gate.yml,测试数量以运行artifact为准
 B02,B,正常CI,PASS,首次正常运行20项服务测试通过,E7/B/evidence/ci-runs/normal-main-43385151022/,不是C最终main的CI
 B03,B,同一PR失败与恢复检查,PASS,版本字符串错误时1失败19通过恢复后20通过,E7/B/evidence/ci-runs/,此项不代表策略禁止合并
-B04,B,main保护规则,PENDING,无有效规则配置证据,E7/B/CI证据索引.md,需管理员配置与回读留证
-B05,B,实际策略拒绝合并,PENDING,现有失败PR快照为UNSTABLE非BLOCKED,E7/B/evidence/ci-runs/failure-43385279812/pr-status.json,需补新PR完整失败拦截恢复证据
-B06,B,最终合并状态与时间,PENDING,本地历史有PR6合并但状态JSON及mergedAt未交付,E7/B/B-验收记录.csv,新演示也应留存完整合并记录
+B04,B,main保护规则,PASS,必需检查与AppID及strict和管理员约束及审批0均已核验,E7/C/e7-rejection/main-protection.json,补验由仓库持有者执行并由C收集核验
+B05,B,实际策略拒绝合并,PASS,PR9普通合并被分支策略拒绝且退出1,E7/C/e7-rejection/merge-rejection.log,退出码见merge-exit.txt
+B06,B,最终合并状态与时间,PASS,PR9同一PR恢复成功后已合并且合并时间已保存,E7/C/e7-rejection/github-records.json,mergeCommit为0328959115c5ad7e5239edd35a33295ebd5f086d
 C01,C,新增重复发现判定,PASS,定向1项及完整7项通过,E7/C/03-all-oracle.log,未修改算法
 C02,C,集成源码云端运行,PASS,服务21项独立判定7项gate8项通过,E7/C/evidence/,源码04ddd8f9ca73342bad56412a0b54e81b70227d5f
 C03,C,下载证据离线核验,PASS,输入哈希和判定及JSONCSV一致,E7/C/04-evidence-verification.json,不是重新运行容器
-C04,C,总报告与验收表,PASS,已按现有材料汇总并明确缺项,E7/E7实验报告.md,不宣称全部验收完成
-C05,C,最终main对应成功CI,PENDING,C贡献合并后再核验运行及下载artifact,E7/提交说明.md,不能借用早期B运行
-C06,C,最终归档和包外校验值,PENDING,待缺项补齐并确定最终版本,E7/提交说明.md,已有下载目录不等于最终提交包
+C04,C,总报告与验收表,PASS,报告及验收表已依据全部补验证据更新,E7/E7实验报告.md,早期B材料作为历史记录保留
+C05,C,最终main对应成功CI,PASS,最终main合并SHA对应push运行43428975185成功,https://github.com/jkiuiui0058/DevOps-A07/actions/runs/43428975185,本地artifact备份另列C07
+C06,C,最终归档和包外校验值,PASS,归档与逐文件清单和包外SHA256生成后已重新读取核验,E7/提交说明.md,归档包含本次文档工作区快照不冒充已推送版本
+C07,C,新闭环artifact本地备份,PASS,三次解包artifact已保存并验证失败断言和恢复main八项gate,E7/C/05-closure-verification.json,最终main commit.txt与0328959完整SHA一致
