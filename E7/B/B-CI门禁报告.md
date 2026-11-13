@@ -20,8 +20,8 @@
 |---|---|---|
 | B01：测试与 workflow 接入 | PASS | PR #5 与 Actions 检查 |
 | B02：正常 main CI | PASS | run 43385151022（commit `13ac0aa`） |
-| B03：同一 PR 失败与恢复 | 进行中 | PR #6 已得到真实失败 run；当前提交恢复正确期望 |
+| B03：同一 PR 失败与恢复 | PASS | PR #6 在错误期望下失败，恢复正确期望后 run 43385546575 成功 |
 | B03：保护规则 | PENDING（权限不足） | 当前身份有 push、无 admin，不能配置或声称已配置保护规则 |
-| B04：成品包 | 进行中 | 已归档 normal/failure 证据；恢复/合并后补齐 |
+| B04：成品包 | PASS | normal、failure 和 recovery artifact 已下载并归档；合并记录见 PR #6 |
 
 > 云端 URL、运行 ID、规则 JSON 和合并记录只在实际操作后填写，绝不以预期代替结果。

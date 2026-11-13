@@ -4,9 +4,9 @@
 
 | 阶段 | PR / SHA | 实际结果 | 运行证据 | 本地归档 |
 |---|---|---|---|---|
-| 正常 main | PR #5，merge commit `13ac0aa39e5c29157fec6251f4c7bc027b4624c5` | SUCCESS | https://github.com/jkiuiui0058/DevOps-A07/actions/runs/43385151022 | 待下载 |
+| 正常 main | PR #5，merge commit `13ac0aa39e5c29157fec6251f4c7bc027b4624c5` | SUCCESS | https://github.com/jkiuiui0058/DevOps-A07/actions/runs/43385151022 | `normal-main-43385151022/` |
 | 同一 PR 故意错误期望 | PR #6，`630bdf95ee0bf586559bc76bffc4b56eab8183f0` | FAILURE；服务单元测试退出 1，gate 总体失败 | https://github.com/jkiuiui0058/DevOps-A07/actions/runs/43385279812 | `failure-43385279812/` |
-| 同一 PR 恢复正确期望 | PR #6，待本次提交推送 | PENDING | PENDING | PENDING |
+| 同一 PR 恢复正确期望 | PR #6，`8a4f93997e7159a7692929c6b89fdc69ffab1688` | SUCCESS | https://github.com/jkiuiui0058/DevOps-A07/actions/runs/43385546575 | `recovery-43385546575/` |
 
 ## 保护规则权限核验
 
