@@ -54,7 +54,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 "$PROJECT/scripts/secret_scan.py" . --image "$IMAGE" 2>&1 | tee "$EVIDENCE/image-scan.log"
+          python3 "$PROJECT/scripts/secret_scan.py" . --pathspec "$PROJECT" --image "$IMAGE" 2>&1 | tee "$EVIDENCE/image-scan.log"
 
       - name: Run the real component and fault gate
         working-directory: A-buildchecker
