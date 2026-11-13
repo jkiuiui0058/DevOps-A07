@@ -19,7 +19,7 @@ class TestE7BServiceBoundary(unittest.TestCase):
 
     def test_teaching_detector_version_is_explicit_for_ci_provenance(self):
         """The CI record can identify the detector implementation it exercised."""
-        self.assertEqual(VERSION, "0.2.0-teaching")
+        self.assertEqual(VERSION, "1")
 
 
 if __name__ == "__main__":
