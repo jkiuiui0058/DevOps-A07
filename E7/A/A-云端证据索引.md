@@ -14,8 +14,10 @@
 - 离线复验：仓库根执行 `python -B E7/A/verify_evidence.py`；
   实际输出及退出码见 [`09-delivery-verification.log`](09-delivery-verification.log)。
 
-运行与资料核验已完成；个人 PR **待创建**。交付文件目前在工作区，需用户后续提交/推送后
-C 才能从远端取得；本轮未 commit/push/PR。不虚构 A 的 CI run ID，不用 B 结果代替 A 证据。
+运行与资料核验、提交推送及个人 PR 交付已完成：
+[PR #7](https://github.com/jkiuiui0058/DevOps-A07/pull/7)，作者账号 **ChipmunkYu**，`e7-a → main`。
+C 可从 PR 直接取得交付包；PR 待 C 审阅与集成合并，不等于已合并。
+不虚构 A 的 CI run ID，不用 B 结果代替 A 证据；最新 PR 检查以 GitHub 实际状态为准。
 
 ## 源码与镜像
 
@@ -130,4 +132,5 @@ A01 是合成 trace 单元测试；上述 MD/RD 与故障 gate 才是真实构�
 发布前 `git diff --cached --check` 发现 Windows 包装日志的 CR/CRCRLF 被判为行尾空白，
 故仅将 `01`—`04`、`09` 文本日志换行归一为 LF，未更改命令、输出文本、时长或退出码。
 云端原始证据包及其内部 trace/构建日志完全未动，包 SHA256 不变。
-本轮核验退出 0；无未解决运行阻碍。最终提交、PR 和合并状态仍待用户处理。
+本轮核验退出 0；无未解决运行阻碍。个人提交、推送与 PR 交付已完成，待 C 审阅/集成验收及合并。
+`05`、`06`、`08` 中的授权等待、未 push/PR 字段均为采集当时的历史记录，不表示当前发布状态。
