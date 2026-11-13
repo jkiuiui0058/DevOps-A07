@@ -41,7 +41,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 "$PROJECT/scripts/secret_scan.py" . --history 2>&1 | tee "$EVIDENCE/source-scan.log"
+          python3 "$PROJECT/scripts/secret_scan.py" . --history --pathspec "$PROJECT" 2>&1 | tee "$EVIDENCE/source-scan.log"
 
       - name: Build the service image
         shell: bash

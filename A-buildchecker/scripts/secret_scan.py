@@ -44,8 +44,11 @@ def git(root, *args):
     return subprocess.run(["git", "-C", str(root), *args], capture_output=True, text=True)
 
 
-def files(root):
-    p = git(root, "ls-files")
+def files(root, pathspec=None):
+    command = ["ls-files"]
+    if pathspec:
+        command += ["--", pathspec]
+    p = git(root, *command)
     if p.returncode == 0:
         return [root / f for f in p.stdout.splitlines()], True
     out = []
@@ -59,12 +62,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("root", nargs="?", default=".")
     ap.add_argument("--history", action="store_true")
+    ap.add_argument("--pathspec", help="Limit tracked-file and history scanning to this Git path")
     ap.add_argument("--image")
     args = ap.parse_args()
     root = Path(args.root).resolve()
     hits = []
 
-    paths, in_git = files(root)
+    paths, in_git = files(root, args.pathspec)
     for p in paths:
         rel = p.relative_to(root).as_posix()
         if p.name == ".env" or (p.name.startswith(".env.") and p.name != ".env.example"):
@@ -83,7 +87,10 @@ def main():
         hits.append(".env 权限过宽：执行 chmod 600 .env")
 
     if args.history and in_git:
-        log = git(root, "log", "--all", "-p", "--no-color").stdout
+        history_args = ["log", "--all", "-p", "--no-color"]
+        if args.pathspec:
+            history_args += ["--", args.pathspec]
+        log = git(root, *history_args).stdout
         hits += scan_text(log, "git-history")
     if args.image:
         for cmd, where in ((["docker", "history", "--no-trunc", "--format", "{{.CreatedBy}}", args.image], "image-history"),
