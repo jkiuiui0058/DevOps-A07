@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "scope": "offline closure evidence verification",
+  "required_check": "e7-a-quality-gate",
+  "app_id": 15368,
+  "strict": true,
+  "enforce_admins": true,
+  "required_approvals": 0,
+  "merge_rejection_exit": 1,
+  "merged_at": "2026-11-13T12:53:31Z",
+  "stages": [
+    {
+      "stage": "failure-43427014659",
+      "expected_gate_passed": false,
+      "checkout_sha": "c3a2400c63d1e834a7e0c95a2e750dc23e7e32f6",
+      "verified": true
+    },
+    {
+      "stage": "recovery-43428201601",
+      "expected_gate_passed": true,
+      "checkout_sha": "09b75b327840b3bcc7a777d4777e6388e9fb6cef",
+      "verified": true
+    },
+    {
+      "stage": "main-43428975185",
+      "expected_gate_passed": true,
+      "checkout_sha": "0328959115c5ad7e5239edd35a33295ebd5f086d",
+      "verified": true
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+name: E7 A quality gate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gate:
+    name: e7-a-quality-gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      IMAGE: e7-buildchecker:ci
+      PROJECT: A-buildchecker
+      EVIDENCE: work/ci
+    steps:
+      - name: Check out the exact triggering revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Prepare evidence and check Python syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$EVIDENCE"
+          git rev-parse HEAD > "$EVIDENCE/commit.txt"
+          docker version > "$EVIDENCE/docker-version.txt"
+          python3 -m compileall -q "$PROJECT/services/buildchecker/buildchecker" "$PROJECT/scripts" "$PROJECT/tests/e7"
+
+      - name: Test the independent oracle
+        working-directory: A-buildchecker
+        run: python3 -m unittest discover -s tests/e7 -v
+
+      - name: Scan tracked sources and Git history
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 "$PROJECT/scripts/secret_scan.py" . --history --pathspec "$PROJECT" 2>&1 | tee "$EVIDENCE/source-scan.log"
+
+      - name: Build the service image
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker build --progress=plain -f "$PROJECT/services/buildchecker/Dockerfile" -t "$IMAGE" "$PROJECT" 2>&1 | tee "$EVIDENCE/build.log"
+          docker image inspect "$IMAGE" > "$EVIDENCE/service-image-inspect.json"
+
+      - name: Scan built image
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 "$PROJECT/scripts/secret_scan.py" . --pathspec "$PROJECT" --image "$IMAGE" 2>&1 | tee "$EVIDENCE/image-scan.log"
+
+      - name: Run the real component and fault gate
+        working-directory: A-buildchecker
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/run_e7_a_gate.py --image "$IMAGE" --out ../work/ci/gate 2>&1 | tee ../work/ci/gate-console.log
+
+      - name: Archive evidence even when checks fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e7-a-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: work/ci/
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14

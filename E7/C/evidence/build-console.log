@@ -1,0 +1,76 @@
+EVIDENCE_DIR=/root/241250082/DevOps-A07/A-buildchecker/work/e7-c-20261113-195401/build
+
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3.13-slim@sha256:f82c96458eedc847b233e582eb31336f4954b39cae020b6dcf5b3ed0e5cbcd74
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 43.87kB done
+#7 DONE 0.0s
+
+#8 [3/8] COPY requirements-dev.lock /tmp/requirements-dev.lock
+#8 CACHED
+
+#9 [4/8] RUN pip install --no-cache-dir --require-hashes -r /tmp/requirements-dev.lock  && pip freeze | sed 's/^/pip:/' >> /opt/toolchain.lock
+#9 CACHED
+
+#10 [5/8] RUN useradd --create-home --uid 10001 app && install -d -o app -g app /app
+#10 CACHED
+
+#11 [2/8] RUN sed -i       -e 's|http://deb.debian.org|https://repo.huaweicloud.com|g'       -e 's|https://deb.debian.org|https://repo.huaweicloud.com|g'       -e 's|http://security.debian.org|https://repo.huaweicloud.com|g'       -e 's|https://security.debian.org|https://repo.huaweicloud.com|g'       /etc/apt/sources.list.d/debian.sources  && apt-get update  && apt-get install -y --no-install-recommends gcc make libc6-dev strace git  && rm -rf /var/lib/apt/lists/*  && dpkg-query -W -f='${Package}=${Version}\n' gcc make libc6-dev strace git > /opt/toolchain.lock  && echo "python3=$(python3 -c 'import platform; print(platform.python_version())')" >> /opt/toolchain.lock  && echo "arch=$(dpkg --print-architecture)" >> /opt/toolchain.lock
+#11 CACHED
+
+#12 [6/8] WORKDIR /app
+#12 CACHED
+
+#13 [7/8] COPY --chown=app:app services/buildchecker/ /app/
+#13 DONE 0.0s
+
+#14 [8/8] COPY --chown=app:app fixtures/ /app/fixtures/
+#14 DONE 0.0s
+
+#15 exporting to image
+#15 exporting layers 0.0s done
+#15 writing image sha256:bc0561cdd10505386aaffe78043acda26593541d1f7818eb064946966fdf4d8c done
+#15 naming to docker.io/library/course1027-buildchecker:e7-c done
+#15 DONE 0.0s
+            "ArgsEscaped": true
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 450841059,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/7474c8qd4b8ljsavkjn348r2d/diff:/var/lib/docker/overlay2/0hswi7ax2v6nznuzztkqao32v/diff:/var/lib/docker/overlay2/rgltwqcuupsct5fbsl0y5tkcy/diff:/var/lib/docker/overlay2/avc0drblu6o9ts7qzek1mknf9/diff:/var/lib/docker/overlay2/gq76q72vi1d7x6uchi1y00f8j/diff:/var/lib/docker/overlay2/i0ci6rqlbwzgb2sg08is3yli4/diff:/var/lib/docker/overlay2/65afe64092a468a03d3a04722e8f47882ec8a8cdf041ef09875a464ae020fa21/diff:/var/lib/docker/overlay2/93701096a54dff64e412193b57469628420921ed52616213077380169db040a3/diff:/var/lib/docker/overlay2/95f32077e0815d483ddf2b2afa000093f9f692df35935810f58e6af6e5c18b4c/diff:/var/lib/docker/overlay2/767c189ed39421a4f16aa31ef8e9c0e8c251c95d2747e71a809e5174efbc90d6/diff",
+                "MergedDir": "/var/lib/docker/overlay2/zj7z7e9t7jl1jp8sbdrxxku0p/merged",
+                "UpperDir": "/var/lib/docker/overlay2/zj7z7e9t7jl1jp8sbdrxxku0p/diff",
+                "WorkDir": "/var/lib/docker/overlay2/zj7z7e9t7jl1jp8sbdrxxku0p/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:f4f8b983b714f130e2cff99176baa26352db6a55d3622e10ada40f2b4720a4eb",
+                "sha256:7ef9ddba6965cfcb2dcd5bf24e61737a0031c2d9be2b3377339111ab1ad3f0f2",
+                "sha256:ef9f8c7c1d6b6b918d5e93cba9a7de4c837e3047ca733296bd396d9a413ae64f",
+                "sha256:fde42b5dd2510411f5cd411982dd5fa72f546553ccba3e5260f33a3da21bbf8f",
+                "sha256:93600a9e1267d17f1499553a7645d2d75ba2f2fc495d848fa3cd328e7085ae3f",
+                "sha256:375eb8054a5f4d9725554e7a4d49365bb247462000f78326e761ec96895bde3c",
+                "sha256:a86fa3c202f6c380b5e6c8a247ceb1d4594cddf80cd3d30ee19409522e211a0d",
+                "sha256:b4016fe9b81a93d53def7a10a0c7644babe8bea0c5847fda551e09006da38084",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:2a8a32a0a0b073abd26f16de863367a49f072ec8a1177c9a1102bef7261c6c47",
+                "sha256:af654378114f0d6ed86873ae758c180a9d463aa5b654bca0bb8eb82412cad4e1"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-11-13T19:54:16.785233497+08:00"
+        }
+    }
+]
+
+.....................                                                    [100%]
+21 passed in 0.06s
+

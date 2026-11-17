@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "scope": "offline downloaded evidence verification",
+  "source_sha": "04ddd8f9ca73342bad56412a0b54e81b70227d5f",
+  "image_id": "sha256:bc0561cdd10505386aaffe78043acda26593541d1f7818eb064946966fdf4d8c",
+  "service_tests": 21,
+  "independent_tests": 7,
+  "gate_rows": 8,
+  "original_inputs_identical": true,
+  "fixed_changed_files": [
+    "Makefile"
+  ],
+  "json_csv_match": true
+}

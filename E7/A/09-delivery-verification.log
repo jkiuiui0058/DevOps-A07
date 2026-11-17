@@ -1,0 +1,20 @@
+command: python -B E7/A/verify_evidence.py
+--- stdout ---
+{
+  "passed": true,
+  "package_sha256": "e800d08aa1bc6227e6d92dfe050778e1aafbfde1f81a9977cb9fa9e516777c84",
+  "manifest_files": 259,
+  "recursively_scanned_files": 805,
+  "sensitive_pattern_hits": 0,
+  "source_sha": "e779b3130cd9b91eba4c6e54f4a6a85f5606b99c",
+  "service_tests": 21,
+  "independent_tests": 6,
+  "gate_rows": 8,
+  "original_three_hashes_equal": true,
+  "fixed_only_makefile_changed": true,
+  "trace_and_declaration_anchors_verified": true
+}
+
+--- stderr ---
+
+exit_code: 0

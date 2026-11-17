@@ -1,0 +1,86 @@
+A02/A03 read-only cloud diagnostic
+UTC start reported by remote: 2026-11-13T07:42:17Z
+Connection: PowerShell native ssh, using the existing local quick-reference entry.
+Endpoint and authentication paths deliberately omitted from public evidence.
+No build, test, archive upload, git mutation, dependency install or container launch performed.
+
+LOCAL commands and observed results:
+git status --short
+?? A-buildchecker/services/buildchecker/tests/test_e7_a.py
+?? E7/A/
+git branch --show-current
+e7-a
+git rev-parse HEAD
+d18ef00e758c8a36f2cd3c5f8054f4f088378c11
+git ls-files --error-unmatch A-buildchecker/services/buildchecker/tests/test_e7_a.py
+error: pathspec 'A-buildchecker/services/buildchecker/tests/test_e7_a.py' did not match any file(s) known to git
+Did you forget to 'git add'?
+git log -1 --format="%h %s"
+d18ef00 Merge pull request #6 from jkiuiui0058/e7-b-pr-recovery
+Get-FileHash -Algorithm SHA256 -LiteralPath A-buildchecker/services/buildchecker/tests/test_e7_a.py
+8BC8301B76A902BD315617D48FE4E7567BED14F1CFC1FB3E10811BB4AC518EB4
+
+REMOTE commands (personal clone path represented as <personal-clone>):
+export GIT_OPTIONAL_LOCKS=0
+git -C <personal-clone> status --short
+?? E4/
+git -C <personal-clone> branch --show-current
+main
+git -C <personal-clone> rev-parse HEAD
+a2d9d3a2a4b2af062a11d1cc5406510ab3c5b8b8
+git -C <personal-clone> log -1 --format='%h %s'
+a2d9d3a Fix： 修改文档表格预览效果
+test -d <personal-clone>/A-buildchecker
+exit=1 (current E7 project entry absent)
+
+git --version
+git version 2.43.0
+python3 --version
+Python 3.12.3
+make --version
+GNU Make 4.3
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+docker version --format '{{.Client.Version}} / {{.Server.Version}}'
+29.1.3 / 29.1.3
+exit=0
+docker info --format 'CPUs={{.NCPU}} MemoryBytes={{.MemTotal}} Running={{.ContainersRunning}} Driver={{.Driver}}'
+CPUs=2 MemoryBytes=1861885952 Running=0 Driver=overlay2
+exit=0
+docker ps --format 'ID={{.ID}} Image={{.Image}} Status={{.Status}} Names={{.Names}}'
+(no rows)
+exit=0
+nproc
+2
+free -m
+               total        used        free      shared  buff/cache   available
+Mem:            1775         543          92           2        1333        1231
+Swap:              0           0           0
+df -h <personal-root>
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        79G  6.7G   69G   9% /
+
+First piped script's final uptime command failed due to a CR suffix:
+bash: line 30: $'uptime\r': command not found
+This diagnostic transport issue was not a test/build failure. Retried using a direct SSH command:
+uptime
+ 15:42:28 up 28 days,  4:17,  1 user,  load average: 0.00, 0.01, 0.00
+docker compose version
+Docker Compose version 2.40.3+ds1-0ubuntu1~24.04.1
+docker buildx version
+github.com/docker/buildx 0.30.1 0.30.1-0ubuntu1~24.04.1
+test -w <personal-root>
+exit=0 (reported by printf; newline escaping rendered a trailing literal n)
+
+DECISION:
+Docker is available remotely; no running containers at diagnostic time.
+The existing personal clone is old, has untracked E4/ content, and lacks A-buildchecker/.
+Do not reset, clean, checkout, pull or overwrite that clone.
+Local A01 test is untracked: local HEAD is a baseline, NOT a commit containing A01.
+No expensive build of uncommitted code has been started.
+Await authorization/instruction for the source provenance required by formal evidence.
+Image build, Linux tests, complete eight-case gate, evidence download and backup hashes: PENDING.

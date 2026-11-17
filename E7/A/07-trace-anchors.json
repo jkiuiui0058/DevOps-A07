@@ -1,0 +1,137 @@
+{
+  "original-1": [
+    {
+      "type": "MISSING",
+      "target": "main.o",
+      "dependency": "config.h",
+      "excerpts": [
+        {
+          "anchor": {
+            "source": "system_call",
+            "trace_file": "t.14",
+            "line": 579,
+            "pid": 14,
+            "operation": "openat"
+          },
+          "raw_line": "openat(AT_FDCWD, \"config.h\", O_RDONLY|O_NOCTTY) = 4"
+        },
+        {
+          "anchor": {
+            "source": "system_call",
+            "trace_file": "t.15",
+            "line": 23,
+            "pid": 15,
+            "operation": "openat"
+          },
+          "raw_line": "openat(AT_FDCWD, \"main.o\", O_RDWR|O_CREAT|O_TRUNC, 0666) = 3"
+        }
+      ]
+    },
+    {
+      "type": "REDUNDANT",
+      "target": "main.o",
+      "dependency": "unused.h",
+      "excerpts": [
+        {
+          "anchor": {
+            "source": "make_database",
+            "artifact": "make-db.txt",
+            "line": 1053,
+            "declaration": "main.o: main.c unused.h"
+          },
+          "raw_line": "main.o: main.c unused.h"
+        }
+      ]
+    }
+  ],
+  "original-2": [
+    {
+      "type": "MISSING",
+      "target": "main.o",
+      "dependency": "config.h",
+      "excerpts": [
+        {
+          "anchor": {
+            "source": "system_call",
+            "trace_file": "t.14",
+            "line": 579,
+            "pid": 14,
+            "operation": "openat"
+          },
+          "raw_line": "openat(AT_FDCWD, \"config.h\", O_RDONLY|O_NOCTTY) = 4"
+        },
+        {
+          "anchor": {
+            "source": "system_call",
+            "trace_file": "t.15",
+            "line": 23,
+            "pid": 15,
+            "operation": "openat"
+          },
+          "raw_line": "openat(AT_FDCWD, \"main.o\", O_RDWR|O_CREAT|O_TRUNC, 0666) = 3"
+        }
+      ]
+    },
+    {
+      "type": "REDUNDANT",
+      "target": "main.o",
+      "dependency": "unused.h",
+      "excerpts": [
+        {
+          "anchor": {
+            "source": "make_database",
+            "artifact": "make-db.txt",
+            "line": 1053,
+            "declaration": "main.o: main.c unused.h"
+          },
+          "raw_line": "main.o: main.c unused.h"
+        }
+      ]
+    }
+  ],
+  "original-3": [
+    {
+      "type": "MISSING",
+      "target": "main.o",
+      "dependency": "config.h",
+      "excerpts": [
+        {
+          "anchor": {
+            "source": "system_call",
+            "trace_file": "t.14",
+            "line": 579,
+            "pid": 14,
+            "operation": "openat"
+          },
+          "raw_line": "openat(AT_FDCWD, \"config.h\", O_RDONLY|O_NOCTTY) = 4"
+        },
+        {
+          "anchor": {
+            "source": "system_call",
+            "trace_file": "t.15",
+            "line": 23,
+            "pid": 15,
+            "operation": "openat"
+          },
+          "raw_line": "openat(AT_FDCWD, \"main.o\", O_RDWR|O_CREAT|O_TRUNC, 0666) = 3"
+        }
+      ]
+    },
+    {
+      "type": "REDUNDANT",
+      "target": "main.o",
+      "dependency": "unused.h",
+      "excerpts": [
+        {
+          "anchor": {
+            "source": "make_database",
+            "artifact": "make-db.txt",
+            "line": 1053,
+            "declaration": "main.o: main.c unused.h"
+          },
+          "raw_line": "main.o: main.c unused.h"
+        }
+      ]
+    }
+  ]
+}

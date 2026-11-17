@@ -1,0 +1,7 @@
+test_duplicate_finding_is_rejected (test_e7_c_boundary.CBoundaryTests.test_duplicate_finding_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+BOUNDARY_EXIT_CODE=0

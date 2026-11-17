@@ -1,0 +1,189 @@
+{
+  "package_sha256": "e800d08aa1bc6227e6d92dfe050778e1aafbfde1f81a9977cb9fa9e516777c84",
+  "package_size_bytes": 412880,
+  "manifest_file_count": 259,
+  "all_downloaded_file_hashes_match": true,
+  "source_sha": "e779b3130cd9b91eba4c6e54f4a6a85f5606b99c",
+  "image_id": "sha256:9cf27a2cd2c894be2d913717aed1e441a06013ea49e4a04c2fe87db4c3c8ab03",
+  "image_tag": "e7-buildchecker:241098114-e7-20261113t075315z",
+  "verification": {
+    "passed": true,
+    "source_sha": "e779b3130cd9b91eba4c6e54f4a6a85f5606b99c",
+    "image": "e7-buildchecker:241098114-e7-20261113t075315z",
+    "json_csv_eight_rows_match": true,
+    "original_fixture_unchanged": true,
+    "original_three_inputs_identical": true,
+    "fixed_changed_files": [
+      "Makefile"
+    ],
+    "build_failed_real_build_exit": 2,
+    "cases": [
+      {
+        "case": "unit-tests",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "original-1",
+        "passed": true,
+        "exit_code": 1,
+        "detector_status": "SUCCEEDED",
+        "trace_id": "e6-ebd613ef134c43e0b0501ab0bf07bed5"
+      },
+      {
+        "case": "original-2",
+        "passed": true,
+        "exit_code": 1,
+        "detector_status": "SUCCEEDED",
+        "trace_id": "e6-f91147972ad148a298e2aa4e506113f1"
+      },
+      {
+        "case": "original-3",
+        "passed": true,
+        "exit_code": 1,
+        "detector_status": "SUCCEEDED",
+        "trace_id": "e6-76b7296adf884097ab9b3cbc1e053b48"
+      },
+      {
+        "case": "fixed",
+        "passed": true,
+        "exit_code": 0,
+        "detector_status": "SUCCEEDED",
+        "trace_id": "e6-7191b9c094844e7ca7ff16b35638b00c"
+      },
+      {
+        "case": "build-failed",
+        "passed": true,
+        "exit_code": 1,
+        "detector_status": "FAILED",
+        "trace_id": "e6-c612b86630ce492a86134478535db40b"
+      },
+      {
+        "case": "unsupported",
+        "passed": true,
+        "exit_code": 1,
+        "detector_status": "FAILED",
+        "trace_id": "e6-e026b936ac454a01b5b9ca91a9fc2532"
+      },
+      {
+        "case": "timeout",
+        "passed": true,
+        "exit_code": 1,
+        "detector_status": "TIMED_OUT",
+        "trace_id": "e6-105033bb22ec4be69019a9e680ed861b"
+      }
+    ]
+  },
+  "commands": {
+    "build": {
+      "argv": [
+        "docker",
+        "build",
+        "--progress=plain",
+        "-f",
+        "services/buildchecker/Dockerfile",
+        "-t",
+        "e7-buildchecker:241098114-e7-20261113t075315z",
+        "."
+      ],
+      "exit_code": 0
+    },
+    "image-inspect": {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "e7-buildchecker:241098114-e7-20261113t075315z"
+      ],
+      "exit_code": 0
+    },
+    "toolchain": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "e7-buildchecker:241098114-e7-20261113t075315z",
+        "cat",
+        "/opt/toolchain.lock"
+      ],
+      "exit_code": 0
+    },
+    "a01": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "e7-buildchecker:241098114-e7-20261113t075315z",
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_e7_a.py",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    "service-tests": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "e7-buildchecker:241098114-e7-20261113t075315z",
+        "pytest",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    "independent-six": {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/e7",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    "full-gate": {
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/run_e7_a_gate.py",
+        "--image",
+        "e7-buildchecker:241098114-e7-20261113t075315z",
+        "--out",
+        "<isolated-run>/evidence/gate"
+      ],
+      "exit_code": 0
+    }
+  },
+  "service_tests_passed": 21,
+  "independent_tests_passed": 6,
+  "a01_tests_passed": 1,
+  "backup_directory": "D:\\study\\SE\\DevOps\\个人证据备份\\E7-A-20261113T075315Z",
+  "push_or_pr_performed": false
+}
