@@ -39,4 +39,68 @@ class ProfileTests(unittest.TestCase):
         (self.p/'Makefile').write_text((self.p/'Makefile').read_text().replace('-O0','-include unknown.h'))
         with self.assertRaisesRegex(ValueError,'UNSUPPORTED_FLAGS'):scan(self.p)
 
+class E8_newtest1(unittest.TestCase):
+    def test_indirect_include_invalidates_history(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p = Path(directory) / 'sample'
+            fixture(p)
+            old = scan(p)
+
+            # main.c不变，只改变它包含的头文件。
+            header = p / 'config.h'
+            header.write_text('#include "extra.h"\n#define VALUE 1\n')
+            commit(p, 'student: add indirect header dependency')
+
+            result = scan(p, old)
+            self.assertEqual(
+                result['actual']['main.o'],
+                ['config.h', 'extra.h', 'main.c']
+            )
+            self.assertIn(
+                ['MISSING', 'main.o', 'extra.h'], result['added']
+            )
+            self.assertEqual(result['reused'], [])
+            self.assertEqual(
+                set(result['refreshed']), {'main.o', 'helper.o'}
+            )
+
+            full = scan(p)
+            self.assertEqual(result['actual'], full['actual'])
+            self.assertEqual(result['findings'], full['findings'])
+
+class E9_newtest1(unittest.TestCase):
+    def test_removed_indirect_include_clears_old_dependency(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p = Path(directory) / 'sample'
+            fixture(p)
+
+            header = p / 'config.h'
+            header.write_text('#include "extra.h"\n#define VALUE 1\n')
+            commit(p, 'student: establish indirect include')
+            old = scan(p)
+            self.assertEqual(
+                old['actual']['main.o'],
+                ['config.h', 'extra.h', 'main.c']
+            )
+
+            # extra.h仍存在，只删除config.h中的包含指令。
+            header.write_text('#define VALUE 1\n')
+            commit(p, 'student: remove indirect include')
+            result = scan(p, old)
+
+            self.assertEqual(
+                result['actual']['main.o'], ['config.h', 'main.c']
+            )
+            self.assertEqual(result['resolved'], [
+                ['MISSING', 'main.o', 'extra.h']
+            ])
+            self.assertEqual(result['added'], [])
+            self.assertEqual(result['reused'], [])
+            self.assertEqual(
+                set(result['refreshed']), {'main.o', 'helper.o'}
+            )
+
+            full = scan(p)
+            self.assertEqual(result['actual'], full['actual'])
+            self.assertEqual(result['findings'], full['findings'])
 if __name__=='__main__':unittest.main()

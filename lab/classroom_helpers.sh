@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Source from the student's course repository. Uses the existing lab environment.
 lab_ready() {
-  LAB_REPO_ROOT=$(git rev-parse --show-toplevel) || return 1
+  git rev-parse --show-toplevel >/dev/null || return 1
+  LAB_REPO_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P) || return 1
   if [[ "$PWD" != "$LAB_REPO_ROOT" || ! -f labs/e8e10/lab.py ]]; then
-    echo '请进入包含run_lab.py和labs/e8e10/lab.py的个人仓库根目录。' >&2
+    echo '请进入包含run_lab.py和labs/e8e10/lab.py的lab实验目录。' >&2
     return 1
   fi
   SID=$(git config --local user.name) || return 1
@@ -15,7 +16,7 @@ lab_ready() {
 }
 lab_new_run() {
   [[ "$1" =~ ^e(8|9|10)$ && "$2" =~ ^[AB]$ ]] || { echo '用法：lab_new_run e8 A'; return 1; }
-  [[ "$PWD" == "$LAB_REPO_ROOT" ]] || { echo '请回到个人仓库根目录。'; return 1; }
+  [[ "$PWD" == "$LAB_REPO_ROOT" ]] || { echo '请回到lab实验目录。'; return 1; }
   mkdir -p work
   OUT=$(mktemp -d "work/$1-$2-manual.XXXXXX") || return 1
   LAB_STEP_SEQ=0
@@ -26,7 +27,7 @@ lab_new_run() {
   printf '本次证据目录=%s\n' "$OUT"
 }
 lab_python() {
-  [[ "$PWD" == "$LAB_REPO_ROOT" && "$OUT" == work/* && -d "$OUT" ]] || { echo '先在仓库根目录执行lab_ready和lab_new_run。'; return 1; }
+  [[ "$PWD" == "$LAB_REPO_ROOT" && "$OUT" == work/* && -d "$OUT" ]] || { echo '先在lab实验目录执行lab_ready和lab_new_run。'; return 1; }
   LAB_STEP_SEQ=$(( ${LAB_STEP_SEQ:-0} + 1 ))
   mkdir -p "$OUT/steps"
   local log="$OUT/steps/$(date +%Y%m%d-%H%M%S)-$LAB_STEP_SEQ.log"
