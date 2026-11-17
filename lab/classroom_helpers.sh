@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Source from the student's course repository. Uses the existing lab environment.
 lab_ready() {
-  LAB_REPO_ROOT=$(git rev-parse --show-toplevel) || return 1
+  LAB_REPO_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P) || return 1
   if [[ "$PWD" != "$LAB_REPO_ROOT" || ! -f labs/e8e10/lab.py ]]; then
     echo '请进入包含run_lab.py和labs/e8e10/lab.py的个人仓库根目录。' >&2
     return 1
