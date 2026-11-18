@@ -103,4 +103,68 @@ class E9_newtest1(unittest.TestCase):
             full = scan(p)
             self.assertEqual(result['actual'], full['actual'])
             self.assertEqual(result['findings'], full['findings'])
+class StudentE8A_241250005(unittest.TestCase):
+    def test_declaration_change_reuses_actual_graph(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            f=p/'Makefile'
+            f.write_text(f.read_text().replace('main.c unused.h','main.c unused.h config.h'))
+            commit(p,'student: add missing declaration')
+            result=scan(p,old)
+            self.assertEqual(result['actual'],old['actual'])
+            self.assertEqual(set(result['reused']),{'main.o','helper.o'})
+            self.assertEqual(result['refreshed'],[])
+            self.assertEqual(
+                {(x['type'],x['target'],x['dependency']) for x in result['findings']},
+                {('REDUNDANT','main.o','unused.h')})
+
+class StudentE8AIndirectInclude_241250005(unittest.TestCase):
+    def test_indirect_include_invalidates_old_graph(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            (p/'config.h').write_text('#include "extra.h"\n#define VALUE 1\n')
+            commit(p,'student: indirect include inside config.h')
+            r=scan(p,old)
+            self.assertEqual(r['actual']['main.o'],['config.h','extra.h','main.c'])
+            self.assertIn(['MISSING','main.o','extra.h'],r['added'])
+            self.assertEqual(r['refreshed'],['main.o','helper.o'])
+            self.assertEqual(r['reused'],[])
+
+class StudentE9AExtra_241250005(unittest.TestCase):
+    def test_flags_change_refreshes_all_but_findings_stable(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            f=p/'Makefile'
+            f.write_text(f.read_text().replace('CFLAGS = -O0','CFLAGS = -O1'))
+            commit(p,'student: switch optimization flags')
+            r=scan(p,old)
+            self.assertEqual(r['refreshed'],['main.o','helper.o'])
+            self.assertEqual(r['reused'],[])
+            self.assertEqual(r['actual'],old['actual'])
+            self.assertEqual(r['findings'],old['findings'])
+            self.assertEqual(r['added'],[])
+            self.assertEqual(r['resolved'],[])
+
+    def test_revert_restores_reuse_from_old_graph(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            f=p/'main.c'
+            added='#include "extra.h"\n'+f.read_text()
+            f.write_text(added);commit(p,'student: temporary include')
+            f.write_text(f.read_text().replace('#include "extra.h"\n',''));commit(p,'student: revert include')
+            r=scan(p,old)
+            self.assertEqual(r['reused'],['main.o','helper.o'])
+            self.assertEqual(r['refreshed'],[])
+            self.assertEqual(r['findings'],old['findings'])
+            self.assertEqual(r['added'],[])
+            self.assertEqual(r['resolved'],[])
+
 if __name__=='__main__':unittest.main()
