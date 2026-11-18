@@ -103,4 +103,102 @@ class E9_newtest1(unittest.TestCase):
             full = scan(p)
             self.assertEqual(result['actual'], full['actual'])
             self.assertEqual(result['findings'], full['findings'])
+class StudentE8A_241098114(unittest.TestCase):
+    def test_shared_header_include_refreshes_both_consumers(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p = Path(directory) / 'sample'
+            fixture(p)
+            (p/'helper.c').write_text('#include "config.h"\nint helper(void){return 0;}\n')
+            commit(p, '241098114: prepare shared header consumers')
+            old = scan(p)
+
+            # Independent expected edges: both consumers already include config.h.
+            self.assertEqual(old['actual'], {
+                'main.o': ['config.h', 'main.c'],
+                'helper.o': ['config.h', 'helper.c'],
+            })
+            old_findings = {
+                ('MISSING', 'main.o', 'config.h'),
+                ('REDUNDANT', 'main.o', 'unused.h'),
+                ('MISSING', 'helper.o', 'config.h'),
+            }
+            self.assertEqual({(f['type'], f['target'], f['dependency'])
+                              for f in old['findings']}, old_findings)
+
+            # Only the shared header changes; both consumers gain extra.h.
+            (p/'config.h').write_text('#include "extra.h"\n#define VALUE 1\n')
+            commit(p, '241098114: extend shared header include')
+            result = scan(p, old)
+            full = scan(p)
+            self.assertEqual(result['actual'], {
+                'main.o': ['config.h', 'extra.h', 'main.c'],
+                'helper.o': ['config.h', 'extra.h', 'helper.c'],
+            })
+            self.assertEqual({(f['type'], f['target'], f['dependency'])
+                              for f in result['findings']}, old_findings | {
+                ('MISSING', 'main.o', 'extra.h'),
+                ('MISSING', 'helper.o', 'extra.h'),
+            })
+            self.assertEqual(result['added'], [
+                ['MISSING', 'helper.o', 'extra.h'],
+                ['MISSING', 'main.o', 'extra.h'],
+            ])
+            self.assertEqual(result['resolved'], [])
+            self.assertEqual(result['reused'], [])
+            self.assertEqual(result['refreshed'], ['main.o', 'helper.o'])
+            self.assertEqual(result['declared'], old['declared'])
+            self.assertNotEqual(result['key'], old['key'])
+            for field in ['actual', 'declared', 'findings']:
+                self.assertEqual(result[field], full[field], field)
+
+
+class StudentE9A_241098114(unittest.TestCase):
+    def test_enabling_conditional_include_resolves_redundant_edge(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p = Path(directory) / 'sample'
+            fixture(p)
+            header = p/'config.h'
+            header.write_text('#if 0\n#include "extra.h"\n#endif\n#define VALUE 1\n')
+            makefile = p/'Makefile'
+            makefile.write_text(makefile.read_text().replace(
+                'main.o: main.c unused.h', 'main.o: main.c unused.h extra.h'))
+            commit(p, '241098114: prepare disabled conditional include')
+            old = scan(p)
+
+            # A disabled include is not an actual edge, despite its declaration.
+            self.assertEqual(old['actual'], {
+                'main.o': ['config.h', 'main.c'],
+                'helper.o': ['helper.c'],
+            })
+            self.assertEqual({(f['type'], f['target'], f['dependency'])
+                              for f in old['findings']}, {
+                ('MISSING', 'main.o', 'config.h'),
+                ('REDUNDANT', 'main.o', 'extra.h'),
+                ('REDUNDANT', 'main.o', 'unused.h'),
+            })
+
+            # Toggle only the condition: the declared extra.h edge becomes real.
+            header.write_text(header.read_text().replace('#if 0', '#if 1'))
+            commit(p, '241098114: enable conditional include')
+            result = scan(p, old)
+            full = scan(p)
+            self.assertEqual(result['actual'], {
+                'main.o': ['config.h', 'extra.h', 'main.c'],
+                'helper.o': ['helper.c'],
+            })
+            self.assertEqual({(f['type'], f['target'], f['dependency'])
+                              for f in result['findings']}, {
+                ('MISSING', 'main.o', 'config.h'),
+                ('REDUNDANT', 'main.o', 'unused.h'),
+            })
+            self.assertEqual(result['added'], [])
+            self.assertEqual(result['resolved'], [['REDUNDANT', 'main.o', 'extra.h']])
+            self.assertEqual(result['reused'], [])
+            self.assertEqual(result['refreshed'], ['main.o', 'helper.o'])
+            self.assertEqual(result['declared'], old['declared'])
+            self.assertNotEqual(result['key'], old['key'])
+            for field in ['actual', 'declared', 'findings']:
+                self.assertEqual(result[field], full[field], field)
+
+
 if __name__=='__main__':unittest.main()
